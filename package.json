@@ -1,0 +1,21 @@
+{
+  "name": "mocha-typescript-stacktraces",
+  "private": true,
+  "version": "0.0.1",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.2",
+    "source-map-support": "^0.3.2",
+    "tsd": "^0.6.3",
+    "typescript": "^1.5.3"
+  },
+  "scripts": {
+    "postinstall": "tsd install",
+    "clean": "rimraf index.js* lib/**/*.js* test/**/*.js*",
+    "compile": "tsc --target es5 --module commonjs --noImplicitAny --sourcemap",
+    "prepublish": "npm run compile index.ts",
+    "pretest": "npm run compile test/*.spec.ts",
+    "test": "mocha --require source-map-support/register test/**/*.js"
+  }
+}
